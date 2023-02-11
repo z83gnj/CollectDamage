@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# User defined 
+
+# Input and output files
+.hwascii
+.xlsx
