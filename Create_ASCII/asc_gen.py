@@ -59,6 +59,7 @@ ENDE\n \
         ascii_file = open(filename, "w")
         ascii_file.write(content)
         ascii_file.close()
+        print(f"{filename} has been written!")
         nrOfFile += 1
 
 def main ():

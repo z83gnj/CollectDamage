@@ -134,3 +134,4 @@ dmypy.json
 *.hwascii
 *.xlsx
 00_Input/
+*.acs
