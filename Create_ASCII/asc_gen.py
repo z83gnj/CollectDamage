@@ -1,3 +1,5 @@
+import argparse
+
 def create_list (min, max, inc):
     """
     Create a list based on the min, max and the increment values.
@@ -59,10 +61,27 @@ ENDE\n \
         nrOfFile += 1
 
 if __name__ == "__main__":
-    #listOfValues = read_list("values.txt")
-    listOfValues = create_list(-10, 60, 10)
 
-    create_asc(listOfValues)
+    parser = argparse.ArgumentParser(prog="asc_ge.py",
+                            description="Create a Techware ASCII timeseries files based on the given values",
+                            epilog="Ez meg mi lesz")
+    
+    parser.add_argument("-o", "--Output", nargs=3, type = float, help = "Show Output")
+    parser.add_argument("-l", "--List", help = "Show list") 
+    # Read arguments from command line
+    args = parser.parse_args()
+    
+    print(len(vars(args)))
+
+    if args.Output:
+        print("Displaying Output as: % s" % args.Output)
+
+    if args.List:
+        print("Displaying Output as: % s" % args.List)
+    #listOfValues = read_list("values.txt")
+    #listOfValues = create_list(-10, 60, 10)
+
+    #create_asc(listOfValues)
 
 """
 Example of the Tecware-ASCII format:             
