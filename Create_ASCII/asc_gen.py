@@ -62,14 +62,12 @@ ENDE\n \
         print(f"{filename} has been written!")
         nrOfFile += 1
 
-def main ():
+if __name__ == "__main__":
     #listOfValues = read_list("values.txt")
     listOfValues = create_list(-10, 60, 40)
 
     create_asc(listOfValues)
 
-if __name__ == "__main__":
-    main()
     
 """
 Example of the Tecware-ASCII format:             
