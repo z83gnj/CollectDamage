@@ -32,12 +32,8 @@ def create_asc (values):
     for value in values:
         if value < 0 :
             typeOfLoad = "Coast"
-            min = value
-            max = 0
         else:
             typeOfLoad = "Drive"
-            min = 0
-            max = value
 
         content = (f"\
 BEGINN \n \
@@ -46,16 +42,16 @@ SPALTENOFFSET = [ 1 ]\n \
 KANALNAME = [ {typeOfLoad} ]\n \
 LAENGE = [ 3 ]\n \
 EINHEIT = [ 'Nm' ]\n \
-MINIMUM = [ {min} ]\n \
-MAXIMUM = [ {max}]\n \
+MINIMUM = [ 0 ]\n \
+MAXIMUM = [ {abs(value)}]\n \
 ANFANG = [ 0.0 ]\n \
 DELTA = [ 1 ]\n \
 ENDE\n \
     0.000000e+00\n \
-    {value:.6e}\n \
+    {abs(value):.6e}\n \
     0.000000e+00")
         
-        filename = f"TimeSeries_{int(abs(value))}_{typeOfLoad}_{nrOfFile:>03}.asc"
+        filename = f"TimeSeries_{typeOfLoad}_{nrOfFile:>03}.asc"
         ascii_file = open(filename, "w")
         ascii_file.write(content)
         ascii_file.close()
@@ -64,11 +60,10 @@ ENDE\n \
 
 if __name__ == "__main__":
     #listOfValues = read_list("values.txt")
-    listOfValues = create_list(-10, 60, 40)
+    listOfValues = create_list(-10, 60, 10)
 
     create_asc(listOfValues)
 
-    
 """
 Example of the Tecware-ASCII format:             
 BEGIN                                          
